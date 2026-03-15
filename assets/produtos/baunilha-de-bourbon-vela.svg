@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Baunilha de Bourbon</title>
+  <desc id="desc">Placeholder editorial Belluno Essenza para vela aromática.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffaf4"/>
+      <stop offset="100%" stop-color="#efe4d4"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="#f6f1e8"/>
+  <rect x="60" y="60" width="1080" height="1380" rx="58" fill="url(#paper)" stroke="#d7c8a3" stroke-width="6"/>
+  <rect x="150" y="120" width="900" height="1260" rx="48" fill="url(#halo)" opacity="0.9"/>
+  <ellipse cx="600" cy="820" rx="320" ry="90" fill="#d9c7a4" opacity="0.28"/>
+
+    <g transform="translate(0 40)">
+      <rect x="410" y="430" width="380" height="430" rx="70" fill="#f7f2ea" stroke="#c9b78f" stroke-width="8"/>
+      <rect x="445" y="480" width="310" height="260" rx="34" fill="#e3d0af" opacity="0.18"/>
+      <path d="M600 360 C635 410 615 450 600 470 C585 450 565 410 600 360Z" fill="#f0d49a"/>
+      <path d="M600 320 C618 345 607 365 600 378 C593 365 582 345 600 320Z" fill="#5b402a"/>
+      <rect x="470" y="520" width="260" height="140" rx="16" fill="#fffaf4" stroke="#c9b78f" stroke-width="5"/>
+    </g>
+
+  <text x="600" y="190" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="42" letter-spacing="5" fill="#5b402a">BELLUNO ESSENZA</text>
+  <text x="600" y="1035" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="82" fill="#4b3527">Baunilha de Bourbon</text>
+  <text x="600" y="1088" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="30" letter-spacing="4" fill="#b5966f">VELA AROMÁTICA</text>
+  <text x="600" y="1145" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="28" fill="#6b5848">Aconchego cremoso e adulto.</text>
+  <text x="600" y="1315" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="22" fill="#9b8666">Placeholder editorial para substituir por foto real</text>
+</svg>

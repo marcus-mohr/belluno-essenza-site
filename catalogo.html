@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo | Belluno Essenza</title>
+  <meta name="description" content="Explore o catálogo Belluno Essenza com velas aromáticas premium em vidro, cerâmica e acabamentos refinados para a casa.">
+  <link rel="canonical" href="https://www.bellunoessenza.com.br/catalogo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Belluno Essenza">
+  <meta property="og:title" content="Catálogo | Belluno Essenza">
+  <meta property="og:description" content="Coleções Belluno Essenza para perfumar a casa com acabamento premium e visual editorial.">
+  <meta property="og:url" content="https://www.bellunoessenza.com.br/catalogo.html">
+  <meta property="og:image" content="https://www.bellunoessenza.com.br/assets/branding/hero-lifestyle.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data/produtos-data.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body data-page="catalog">
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Belluno Essenza - página inicial">
+        <img src="assets/branding/logo-principal.png" alt="Logo Belluno Essenza">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Abrir menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a class="is-active" href="catalogo.html">Catálogo</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a class="nav-cta" href="contato.html">Solicitar atendimento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-intro page-intro-catalog">
+      <div class="container page-intro-grid">
+        <div class="reveal">
+          <p class="eyebrow">Catálogo Belluno Essenza</p>
+          <h1>Encontre o perfume certo para cada ambiente, ocasião e estilo de casa.</h1>
+          <p>Filtre por categoria, família olfativa, nome ou ordenação para encontrar a vela ideal para presentear, ambientar ou compor a casa com elegância.</p>
+        </div>
+        <div class="page-intro-card reveal">
+          <strong>Curadoria Belluno</strong>
+          <p>Vidro âmbar, madeira natural, cerâmica off-white, lata nude e acabamentos canelados em uma seleção pensada para acolher com sofisticação.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft section-tight-top">
+      <div class="container">
+        <form class="catalog-toolbar" id="catalog-filters">
+          <div class="field-group field-group-search">
+            <label for="search-product">Buscar</label>
+            <input id="search-product" name="search" type="search" placeholder="Ex.: âmbar, canelado, cerâmica, madeira...">
+          </div>
+          <div class="field-group">
+            <label for="filter-category">Categoria</label>
+            <select id="filter-category" name="category">
+              <option value="">Todas</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="filter-family">Família olfativa</label>
+            <select id="filter-family" name="family">
+              <option value="">Todas</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="sort-products">Ordenar por</label>
+            <select id="sort-products" name="sort">
+              <option value="curadoria">Curadoria Belluno</option>
+              <option value="price-asc">Preço: menor para maior</option>
+              <option value="price-desc">Preço: maior para menor</option>
+              <option value="name-asc">Nome A-Z</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="catalog-meta">
+          <p id="catalog-result-count">Carregando produtos...</p>
+          <button class="button button-ghost" id="clear-filters" type="button">Limpar filtros</button>
+        </div>
+
+        <div id="catalog-grid" class="product-grid product-grid-catalog" aria-live="polite"></div>
+
+        <div id="catalog-empty" class="empty-state" hidden>
+          <h2>Nenhum produto encontrado</h2>
+          <p>Tente combinar outra categoria, família olfativa ou ajustar a busca para visualizar a curadoria completa.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="index.html">
+          <img src="assets/branding/logo-principal.png" alt="Logo Belluno Essenza">
+        </a>
+        <p>Catálogo visual premium para velas aromáticas Belluno Essenza, com imagens reais, acabamentos refinados e leitura elegante.</p>
+      </div>
+      <div>
+        <h3>Coleções</h3>
+        <ul>
+          <li><a href="catalogo.html?busca=ambar">Vidro âmbar</a></li>
+          <li><a href="catalogo.html?busca=madeira">Madeira natural</a></li>
+          <li><a href="catalogo.html?busca=ceramica">Cerâmica off-white</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <ul>
+          <li><a href="contato.html">Solicitar pedido</a></li>
+          <li><a href="sobre.html">Conhecer a marca</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="current-year"></span> Belluno Essenza. Todos os direitos reservados.</p>
+      <a href="contato.html">Atendimento consultivo</a>
+    </div>
+  </footer>
+</body>
+</html>
