@@ -715,15 +715,75 @@ p {
 }
 
 .collection-card-candle::before {
-  background-image: url("assets/produtos/vela-aromatica-ambar-belluno-essenza.png");
+  background-image: url("assets/produtos/vela-dia-das-maes-belluno-essenza.png");
 }
 
 .collection-card-diffuser::before {
-  background-image: url("assets/produtos/vela-aromatica-vidro-transparente-madeira-belluno.png");
+  background-image: url("assets/produtos/vela-dia-das-maes-belluno-essenza-01.png");
 }
 
 .collection-card-spray::before {
-  background-image: url("assets/produtos/vela-ceramica-off-white-belluno-essenza.png");
+  background-image: url("assets/produtos/vela-dia-das-maes-belluno-essenza-02.png");
+}
+
+.campaign-collection-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 1.35rem;
+  align-items: stretch;
+}
+
+.campaign-collection-hero {
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgba(182, 154, 111, 0.24);
+  background: linear-gradient(180deg, rgba(250, 244, 234, 0.98), rgba(237, 225, 208, 0.94));
+  min-height: clamp(21rem, 35vw, 31rem);
+}
+
+.campaign-collection-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.campaign-collection-copy {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: clamp(1.25rem, 2.4vw, 1.8rem);
+  border-radius: 1.7rem;
+  border: 1px solid rgba(182, 154, 111, 0.2);
+  background: rgba(255, 252, 247, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.campaign-collection-copy p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.campaign-collection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.campaign-collection-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.campaign-collection-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 1rem;
+  border: 1px solid rgba(182, 154, 111, 0.2);
+  background: rgba(250, 245, 238, 0.9);
 }
 
 .split-media,
@@ -1235,6 +1295,7 @@ code {
 @media (max-width: 1080px) {
   .hero-grid,
   .split-layout,
+  .campaign-collection-layout,
   .sensory-panel,
   .product-layout,
   .contact-layout,
@@ -1332,6 +1393,7 @@ code {
   }
 
   .hero-metrics,
+  .campaign-collection-gallery,
   .product-grid-featured,
   .product-grid-catalog,
   .product-grid-related,

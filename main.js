@@ -4,8 +4,8 @@ const SITE_CONFIG = {
   dataUrl: "data/produtos.json",
   fallbackImage: "assets/branding/hero-lifestyle.png",
   contactEmail: "contato@bellunoessenza.com.br",
-  instagramUrl: "https://www.instagram.com/bellunoessenza/",
-  instagramHandle: "@bellunoessenza",
+  instagramUrl: "https://instagram.com/belluno.essenza",
+  instagramHandle: "@belluno.essenza",
   whatsappNumber: "5547997954557",
   defaultWhatsAppMessage: "Olá! Gostaria de saber mais sobre os produtos da Belluno Essenza."
 };
@@ -426,12 +426,14 @@ async function initHome() {
 
   try {
     const products = await fetchCatalog();
-    const featured = products
+    const activeProducts = products
       .filter((product) => product.ativo)
+      .sort((a, b) => a.ordem - b.ordem);
+    const featured = activeProducts
       .filter((product) => product.destaque)
       .sort((a, b) => a.ordem - b.ordem);
 
-    const list = featured.length ? featured.slice(0, 4) : products.slice(0, 4);
+    const list = featured.length ? featured.slice(0, 4) : activeProducts.slice(0, 4);
     renderCards(featuredContainer, list, "Adicione produtos na planilha para popular esta seção.");
   } catch (error) {
     renderError(featuredContainer, "Não foi possível carregar os produtos em destaque.");
@@ -582,6 +584,7 @@ function sortProducts(products, sort) {
 async function initProduct() {
   const container = document.getElementById("product-detail");
   const relatedContainer = document.getElementById("related-products");
+  const relatedSection = document.getElementById("related-products-section") || (relatedContainer ? relatedContainer.closest("section") : null);
   const breadcrumbCurrent = document.getElementById("product-breadcrumb-current");
   const requestedSlug = textOrFallback(new URLSearchParams(window.location.search).get("slug"));
   const requestedSlugKey = slugify(requestedSlug);
@@ -592,6 +595,9 @@ async function initProduct() {
 
   if (!requestedSlug) {
     renderError(container, "Selecione um produto a partir do catálogo para ver os detalhes.");
+    if (relatedSection) {
+      relatedSection.hidden = true;
+    }
     return;
   }
 
@@ -601,7 +607,15 @@ async function initProduct() {
 
     if (!product) {
       renderError(container, "Produto não encontrado. Volte ao catálogo para escolher outra fragrância.");
-      renderCards(relatedContainer, products.slice(0, 3), "Adicione produtos relacionados.");
+      const fallbackProducts = products.slice(0, 3);
+      if (relatedContainer && fallbackProducts.length) {
+        if (relatedSection) {
+          relatedSection.hidden = false;
+        }
+        renderCards(relatedContainer, fallbackProducts, "Adicione produtos relacionados.");
+      } else if (relatedSection) {
+        relatedSection.hidden = true;
+      }
       return;
     }
 
@@ -615,17 +629,34 @@ async function initProduct() {
       .filter((item) => item.slug !== product.slug)
       .filter((item) => slugify(item.categoria) === slugify(product.categoria) || slugify(item.familia_olfativa) === slugify(product.familia_olfativa))
       .slice(0, 3);
+    const fallbackRelated = products
+      .filter((item) => item.slug !== product.slug)
+      .slice(0, 3);
+    const relatedProducts = related.length ? related : fallbackRelated;
 
-    renderCards(
-      relatedContainer,
-      related.length ? related : products.filter((item) => item.slug !== product.slug).slice(0, 3),
-      "Adicione outros produtos à planilha para enriquecer as sugestões."
-    );
+    if (relatedProducts.length) {
+      if (relatedSection) {
+        relatedSection.hidden = false;
+      }
+      renderCards(
+        relatedContainer,
+        relatedProducts,
+        "Adicione outros produtos à planilha para enriquecer as sugestões."
+      );
+    } else if (relatedSection) {
+      relatedSection.hidden = true;
+      if (relatedContainer) {
+        relatedContainer.innerHTML = "";
+      }
+    }
 
     updateProductMeta(product);
     setupProductGallery(container);
   } catch (error) {
     renderError(container, "Não foi possível carregar os detalhes do produto.");
+    if (relatedSection) {
+      relatedSection.hidden = false;
+    }
     renderError(relatedContainer, "Não foi possível carregar produtos relacionados.");
   }
 }

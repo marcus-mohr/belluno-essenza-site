@@ -2,6 +2,12 @@
 
 Site estático premium da Belluno Essenza, construído com HTML, CSS e JavaScript, com catálogo dinâmico carregado a partir de `data/produtos.json`.
 
+## Estado atual da campanha
+
+- Catálogo ativo sincronizado com `data/produtos.xlsx` contendo 1 produto ativo: coleção especial de Dia das Mães 2026.
+- Seção editorial da campanha na home (`index.html`, âncora `#colecao-dia-das-maes`) usando assets em `assets/produtos`.
+- Instagram oficial atualizado para `https://instagram.com/belluno.essenza`.
+
 ## Estrutura do projeto
 
 ```text
