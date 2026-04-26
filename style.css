@@ -715,7 +715,7 @@ p {
 }
 
 .collection-card-candle::before {
-  background-image: url("assets/produtos/vela-dia-das-maes-belluno-essenza.png");
+  background-image: url("assets/produtos/vela-dia-das-maes-belluno-essenza-00.png");
 }
 
 .collection-card-diffuser::before {
@@ -958,6 +958,36 @@ blockquote {
   border-top: 1px solid rgba(182, 154, 111, 0.18);
 }
 
+.footer-bottom-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.footer-instagram-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 154, 111, 0.35);
+  background: rgba(255, 252, 247, 0.86);
+  color: var(--text);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.footer-instagram-icon:hover {
+  transform: translateY(-2px);
+  border-color: rgba(182, 154, 111, 0.6);
+  box-shadow: var(--shadow-soft);
+}
+
+.footer-instagram-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .page-intro {
   padding: clamp(3.8rem, 6vw, 5.6rem) 0 2rem;
 }
@@ -966,9 +996,40 @@ blockquote {
   padding: 1.6rem 0 0;
 }
 
+.page-intro-catalog-compact {
+  padding: clamp(2.4rem, 4.5vw, 3.4rem) 0 1rem;
+}
+
 .page-intro-grid,
 .page-intro-about .split-layout {
   align-items: start;
+}
+
+.catalog-fast-start {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  align-items: center;
+}
+
+.catalog-fast-start-media {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.8rem;
+  border: 1px solid rgba(182, 154, 111, 0.24);
+  background: linear-gradient(180deg, rgba(250, 244, 234, 0.98), rgba(237, 225, 208, 0.94));
+}
+
+.catalog-fast-start-media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.catalog-fast-start-copy {
+  display: grid;
+  gap: 0.95rem;
 }
 
 .page-intro-card {
@@ -1012,11 +1073,37 @@ blockquote {
 .catalog-meta {
   grid-template-columns: 1fr auto;
   align-items: center;
-  margin: 1rem 0 1.6rem;
+  margin: 1rem 0 1rem;
 }
 
 .catalog-meta p {
   color: var(--text-soft);
+}
+
+.catalog-filters-panel {
+  margin-top: 0.4rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(182, 154, 111, 0.22);
+  background: rgba(255, 252, 247, 0.8);
+  box-shadow: var(--shadow-soft);
+}
+
+.catalog-filters-panel summary {
+  padding: 0.95rem 1.15rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.catalog-filters-panel[open] summary {
+  border-bottom: 1px solid rgba(182, 154, 111, 0.2);
+}
+
+.catalog-filters-panel .catalog-toolbar {
+  margin: 0;
+  border-radius: 0 0 1.4rem 1.4rem;
+  border: 0;
+  box-shadow: none;
 }
 
 .empty-state,
@@ -1299,7 +1386,8 @@ code {
   .sensory-panel,
   .product-layout,
   .contact-layout,
-  .page-intro-grid {
+  .page-intro-grid,
+  .catalog-fast-start {
     grid-template-columns: 1fr;
   }
 
@@ -1340,6 +1428,14 @@ code {
 }
 
 @media (max-width: 900px) {
+  .hero-home .hero-visual {
+    order: -1;
+  }
+
+  .hero-home .hero-copy {
+    order: 1;
+  }
+
   .menu-toggle {
     display: inline-flex;
   }
@@ -1390,6 +1486,11 @@ code {
   .footer-bottom {
     flex-direction: column;
     align-items: start;
+  }
+
+  .footer-bottom-links {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .hero-metrics,

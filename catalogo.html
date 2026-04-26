@@ -44,56 +44,62 @@
   </header>
 
   <main>
-    <section class="page-intro page-intro-catalog">
-      <div class="container page-intro-grid">
-        <div class="reveal">
+    <section class="page-intro page-intro-catalog page-intro-catalog-compact">
+      <div class="container catalog-fast-start">
+        <a class="catalog-fast-start-media reveal" href="produto.html?slug=vela-aromatica-belluno-essenza-dia-das-maes" aria-label="Ver produto da coleção Dia das Mães 2026">
+          <img src="assets/produtos/vela-dia-das-maes-belluno-essenza-00.png" alt="Vela Dia das Mães Belluno Essenza em destaque no catálogo">
+        </a>
+        <div class="catalog-fast-start-copy reveal">
           <p class="eyebrow">Catálogo Belluno Essenza</p>
-          <h1>Coleção Dia das Mães 2026 em edição especial Belluno Essenza.</h1>
-          <p>Este catálogo apresenta a campanha sazonal ativa da marca. Use a busca e os filtros para acessar rapidamente os detalhes do produto especial.</p>
-        </div>
-        <div class="page-intro-card reveal">
-          <strong>Edição de campanha</strong>
-          <p>Uma criação pensada para presentear no Dia das Mães com delicadeza, perfume elegante e acabamento premium.</p>
+          <h1>Coleção Dia das Mães 2026</h1>
+          <p>Uma edição especial para presentear com delicadeza. Abaixo você encontra o produto ativo da campanha com acesso rápido aos detalhes e compra consultiva.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="produto.html?slug=vela-aromatica-belluno-essenza-dia-das-maes">Ver produto</a>
+            <a class="button button-secondary" href="contato.html">Falar com a marca</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section-soft section-tight-top">
       <div class="container">
-        <form class="catalog-toolbar" id="catalog-filters">
-          <div class="field-group field-group-search">
-            <label for="search-product">Buscar</label>
-            <input id="search-product" name="search" type="search" placeholder="Ex.: dia das maes, floral, belluno...">
-          </div>
-          <div class="field-group">
-            <label for="filter-category">Categoria</label>
-            <select id="filter-category" name="category">
-              <option value="">Todas</option>
-            </select>
-          </div>
-          <div class="field-group">
-            <label for="filter-family">Família olfativa</label>
-            <select id="filter-family" name="family">
-              <option value="">Todas</option>
-            </select>
-          </div>
-          <div class="field-group">
-            <label for="sort-products">Ordenar por</label>
-            <select id="sort-products" name="sort">
-              <option value="curadoria">Curadoria Belluno</option>
-              <option value="price-asc">Preço: menor para maior</option>
-              <option value="price-desc">Preço: maior para menor</option>
-              <option value="name-asc">Nome A-Z</option>
-            </select>
-          </div>
-        </form>
+        <div id="catalog-grid" class="product-grid product-grid-catalog" aria-live="polite"></div>
 
         <div class="catalog-meta">
           <p id="catalog-result-count">Carregando produtos...</p>
           <button class="button button-ghost" id="clear-filters" type="button">Limpar filtros</button>
         </div>
 
-        <div id="catalog-grid" class="product-grid product-grid-catalog" aria-live="polite"></div>
+        <details class="catalog-filters-panel">
+          <summary>Buscar e filtros</summary>
+          <form class="catalog-toolbar" id="catalog-filters">
+            <div class="field-group field-group-search">
+              <label for="search-product">Buscar</label>
+              <input id="search-product" name="search" type="search" placeholder="Ex.: dia das maes, floral, belluno...">
+            </div>
+            <div class="field-group">
+              <label for="filter-category">Categoria</label>
+              <select id="filter-category" name="category">
+                <option value="">Todas</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="filter-family">Família olfativa</label>
+              <select id="filter-family" name="family">
+                <option value="">Todas</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="sort-products">Ordenar por</label>
+              <select id="sort-products" name="sort">
+                <option value="curadoria">Curadoria Belluno</option>
+                <option value="price-asc">Preço: menor para maior</option>
+                <option value="price-desc">Preço: maior para menor</option>
+                <option value="name-asc">Nome A-Z</option>
+              </select>
+            </div>
+          </form>
+        </details>
 
         <div id="catalog-empty" class="empty-state" hidden>
           <h2>Nenhum produto encontrado</h2>
@@ -130,7 +136,14 @@
     </div>
     <div class="container footer-bottom">
       <p>&copy; <span id="current-year"></span> Belluno Essenza. Todos os direitos reservados.</p>
-      <a href="contato.html">Atendimento consultivo</a>
+      <div class="footer-bottom-links">
+        <a href="contato.html">Atendimento consultivo</a>
+        <a class="footer-instagram-icon" href="https://instagram.com/belluno.essenza" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Belluno Essenza">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.96 3.96 0 0 0 3.8 7.75v8.5a3.96 3.96 0 0 0 3.95 3.95h8.5a3.96 3.96 0 0 0 3.95-3.95v-8.5a3.96 3.96 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </footer>
 </body>

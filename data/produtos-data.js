@@ -1,5 +1,5 @@
 window.BELLUNO_PRODUCTS_DATA = {
-  "generated_at": "2026-04-26T14:54:26.697846+00:00",
+  "generated_at": "2026-04-26T18:26:17.386115+00:00",
   "source": "data/produtos.xlsx",
   "total": 1,
   "products": [
@@ -23,15 +23,17 @@ window.BELLUNO_PRODUCTS_DATA = {
       "notas_base": "Sândalo, musk branco, âmbar suave",
       "modo_de_uso": "Use sobre superfície plana e resistente ao calor. Na primeira queima, deixe a cera derreter até próximo das bordas para evitar túnel. Nunca use sem supervisão.",
       "composicao": "Cera vegetal premium, essência aromática fina, pavio de algodão e recipiente decorativo.",
-      "imagem_principal": "assets/produtos/vela-dia-das-maes-belluno-essenza.png",
+      "imagem_principal": "assets/produtos/vela-dia-das-maes-belluno-essenza-00.png",
       "galeria_1": "assets/produtos/vela-dia-das-maes-belluno-essenza-01.png",
       "galeria_2": "assets/produtos/vela-dia-das-maes-belluno-essenza-02.png",
       "galeria_3": "assets/produtos/vela-dia-das-maes-belluno-essenza-03.png",
       "imagens": [
-        "assets/produtos/vela-dia-das-maes-belluno-essenza.png",
+        "assets/produtos/vela-dia-das-maes-belluno-essenza-00.png",
         "assets/produtos/vela-dia-das-maes-belluno-essenza-01.png",
         "assets/produtos/vela-dia-das-maes-belluno-essenza-02.png",
-        "assets/produtos/vela-dia-das-maes-belluno-essenza-03.png"
+        "assets/produtos/vela-dia-das-maes-belluno-essenza-03.png",
+        "assets/produtos/vela-dia-das-maes-belluno-essenza-04.png",
+        "assets/produtos/vela-dia-das-maes-belluno-essenza-05.png"
       ],
       "sku": "BE-DMAES-60G-2026",
       "estoque": 30,

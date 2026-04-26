@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import unicodedata
 from datetime import datetime, timezone
@@ -18,6 +19,7 @@ DEFAULT_JS = PROJECT_ROOT / "data" / "produtos-data.js"
 PRODUCTS_DIR = PROJECT_ROOT / "assets" / "produtos"
 BRANDING_FALLBACK = "assets/branding/hero-lifestyle.png"
 IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".svg")
+NUMBERED_IMAGE_SUFFIX = re.compile(r"^(?P<prefix>.+)-(?P<number>\d+)$")
 
 EXPECTED_COLUMNS = [
     "ativo",
@@ -184,6 +186,39 @@ def resolve_primary_image(row_number: int, slug: str, raw_value: object, warning
     return BRANDING_FALLBACK
 
 
+def image_sort_key(path: Path) -> tuple[str, int, str]:
+    match = NUMBERED_IMAGE_SUFFIX.match(path.stem.lower())
+    if match:
+        return (match.group("prefix"), int(match.group("number")), path.name.lower())
+    return (path.stem.lower(), 10**9, path.name.lower())
+
+
+def discover_gallery_images(primary_image: str, current_images: list[str]) -> list[str]:
+    primary_name = Path(primary_image).name
+    primary_stem = Path(primary_name).stem
+    primary_suffix = Path(primary_name).suffix.lower()
+    if primary_suffix not in IMAGE_EXTENSIONS:
+        return []
+
+    prefixes: list[str] = [primary_stem]
+    if primary_stem.endswith("-00"):
+        prefixes.append(primary_stem[:-3])
+
+    seen_names = {Path(image).name for image in current_images}
+    discovered: list[str] = []
+
+    for prefix in prefixes:
+        for path in sorted(PRODUCTS_DIR.glob(f"{prefix}-*"), key=image_sort_key):
+            if path.suffix.lower() not in IMAGE_EXTENSIONS:
+                continue
+            if path.name in seen_names:
+                continue
+            seen_names.add(path.name)
+            discovered.append(relative_product_path(path.name))
+
+    return discovered
+
+
 def build_product(row_number: int, row_data: dict[str, object]) -> tuple[dict[str, object] | None, list[str]]:
     warnings: list[str] = []
 
@@ -215,6 +250,7 @@ def build_product(row_number: int, row_data: dict[str, object]) -> tuple[dict[st
             gallery_images.append(image)
 
     images = [primary_image, *gallery_images]
+    images.extend(discover_gallery_images(primary_image, images))
 
     price = as_price(row_data.get("preco"))
     promotional_price = as_price(row_data.get("preco_promocional"))
