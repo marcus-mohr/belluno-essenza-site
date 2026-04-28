@@ -57,8 +57,28 @@ function setupHeader() {
   const menuToggle = document.querySelector(".menu-toggle");
 
   if (header) {
+    let lastScrollY = window.scrollY;
+
     const updateHeader = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 16);
+      const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+      const isScrollingDown = currentScrollY > lastScrollY;
+
+      header.classList.toggle("is-scrolled", currentScrollY > 16);
+
+      if (document.body.classList.contains("nav-open")) {
+        header.classList.remove("is-hidden");
+      } else if (currentScrollY <= 24) {
+        header.classList.remove("is-hidden");
+      } else if (scrollDelta > 6) {
+        if (isScrollingDown && currentScrollY > 120) {
+          header.classList.add("is-hidden");
+        } else {
+          header.classList.remove("is-hidden");
+        }
+      }
+
+      lastScrollY = currentScrollY;
     };
 
     updateHeader();
@@ -69,12 +89,16 @@ function setupHeader() {
     menuToggle.addEventListener("click", () => {
       const isOpen = document.body.classList.toggle("nav-open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
+      if (isOpen) {
+        header?.classList.remove("is-hidden");
+      }
     });
 
     document.querySelectorAll(".site-nav a").forEach((link) => {
       link.addEventListener("click", () => {
         document.body.classList.remove("nav-open");
         menuToggle.setAttribute("aria-expanded", "false");
+        header?.classList.remove("is-hidden");
       });
     });
   }

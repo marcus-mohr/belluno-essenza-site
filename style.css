@@ -159,7 +159,7 @@ textarea {
   background: rgba(243, 239, 232, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(207, 189, 149, 0.16);
-  transition: background-color var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transition: transform 280ms ease, background-color var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .site-header.is-scrolled {
@@ -169,12 +169,16 @@ textarea {
   border-bottom: 1px solid rgba(207, 189, 149, 0.24);
 }
 
+.site-header.is-hidden {
+  transform: translateY(-110%);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.3rem;
-  min-height: 5.25rem;
+  gap: 2rem;
+  min-height: 5.8rem;
 }
 
 .brand {
@@ -183,9 +187,8 @@ textarea {
 }
 
 .brand img {
-  width: auto;
-  max-width: 232px;
-  height: clamp(44px, 3.8vw, 62px);
+  width: clamp(150px, 18vw, 238px);
+  height: auto;
 }
 
 .footer-brand img {
@@ -196,7 +199,7 @@ textarea {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.5rem;
   font-size: 0.95rem;
 }
 
@@ -1462,11 +1465,6 @@ code {
 }
 
 @media (max-width: 900px) {
-  .brand img {
-    max-width: 198px;
-    height: clamp(38px, 8vw, 52px);
-  }
-
   .hero-home .hero-visual {
     order: -1;
   }
