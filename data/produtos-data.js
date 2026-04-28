@@ -1,7 +1,7 @@
 window.BELLUNO_PRODUCTS_DATA = {
-  "generated_at": "2026-04-26T18:26:17.386115+00:00",
+  "generated_at": "2026-04-28T16:17:13.971359+00:00",
   "source": "data/produtos.xlsx",
-  "total": 1,
+  "total": 2,
   "products": [
     {
       "ativo": true,
@@ -12,7 +12,7 @@ window.BELLUNO_PRODUCTS_DATA = {
       "subtitulo": "Presentei a pessoa que você mais ama",
       "categoria": "Coleção dia das Mães 2026",
       "familia_olfativa": "Floral amadeirada suave",
-      "preco": 32.9,
+      "preco": 34.9,
       "preco_promocional": null,
       "volume": "60g",
       "tempo_queima": "12 horas",
@@ -40,6 +40,43 @@ window.BELLUNO_PRODUCTS_DATA = {
       "selo": "Edição especial Dia das Mães",
       "meta_title": "Vela Aromática Dia das Mães Belluno Essenza | Presente Artesanal",
       "meta_description": "Vela aromática artesanal Belluno Essenza da Coleção Dia das Mães, com fragrância floral suave, acabamento elegante e proposta delicada para presentear.",
+      "disponivel": true
+    },
+    {
+      "ativo": true,
+      "destaque": true,
+      "ordem": 2,
+      "slug": "vela-aromatica-belluno-limao-siciliano",
+      "nome": "Vela Aromática Belluno Essenza Limão Siciliano",
+      "subtitulo": "Frescor cítrico com toque leve e elegante",
+      "categoria": "Velas aromáticas",
+      "familia_olfativa": "Cítrica fresca",
+      "preco": 39.9,
+      "preco_promocional": null,
+      "volume": "90g",
+      "tempo_queima": "16 horas",
+      "descricao_curta": "Vela aromática artesanal de limão siciliano, com perfume cítrico, leve e luminoso para deixar o ambiente mais fresco e agradável.",
+      "descricao_completa": "A Vela Aromática Belluno Essenza Limão Siciliano combina o frescor cítrico do limão siciliano com uma sensação limpa e delicada para o dia a dia. Produzida artesanalmente com cera vegetal e pavio de algodão, vem em recipiente de vidro com tampa de madeira, criando uma peça simples, bonita e fácil de usar na decoração. É uma boa escolha para perfumar lavabos, quartos, salas pequenas e momentos em que você quer uma casa com aroma fresco, leve e acolhedor.",
+      "notas_topo": "Limão siciliano, bergamota",
+      "notas_coracao": "Verbena, folhas verdes",
+      "notas_base": "Musk branco, toque amadeirado suave",
+      "modo_de_uso": "Use sobre superfície plana e resistente ao calor. Na primeira queima, deixe a cera derreter até próximo das bordas para evitar túnel. Nunca deixe a vela acesa sem supervisão.",
+      "composicao": "Cera vegetal premium, essência aromática de limão siciliano, pavio de algodão, recipiente de vidro e tampa de madeira.",
+      "imagem_principal": "assets/produtos/vela-limao-siciliano-belluno-essenza-01.png",
+      "galeria_1": "assets/produtos/vela-limao-siciliano-belluno-essenza-02.png",
+      "galeria_2": "assets/produtos/vela-limao-siciliano-belluno-essenza-03.png",
+      "galeria_3": "assets/produtos/vela-limao-siciliano-belluno-essenza-04.png",
+      "imagens": [
+        "assets/produtos/vela-limao-siciliano-belluno-essenza-01.png",
+        "assets/produtos/vela-limao-siciliano-belluno-essenza-02.png",
+        "assets/produtos/vela-limao-siciliano-belluno-essenza-03.png",
+        "assets/produtos/vela-limao-siciliano-belluno-essenza-04.png"
+      ],
+      "sku": "BE-LS-90G",
+      "estoque": 64,
+      "selo": "Novo",
+      "meta_title": "Vela Aromática Limão Siciliano Belluno Essenza | Frescor Cítrico",
+      "meta_description": "Vela aromática artesanal Belluno Essenza Limão Siciliano, com perfume cítrico, fresco e leve, em vidro com tampa de madeira para perfumar e decorar ambientes.",
       "disponivel": true
     }
   ]
