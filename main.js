@@ -3,11 +3,10 @@ const SITE_CONFIG = {
   domain: "https://www.bellunoessenza.com.br",
   dataUrl: "data/produtos.json",
   fallbackImage: "assets/branding/hero-lifestyle.png",
-  contactEmail: "contato@bellunoessenza.com.br",
   instagramUrl: "https://instagram.com/belluno.essenza",
   instagramHandle: "@belluno.essenza",
   whatsappNumber: "5547997954557",
-  defaultWhatsAppMessage: "Olá! Gostaria de saber mais sobre os produtos da Belluno Essenza."
+  defaultWhatsAppMessage: "Ola! Gostaria de saber mais sobre os produtos da Belluno Essenza."
 };
 
 const currencyFormatter = new Intl.NumberFormat("pt-BR", {
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setCurrentYear();
   setupHeader();
   setupRevealAnimations();
-  setupNewsletterForms();
   hydrateWhatsAppLinks();
   injectFloatingWhatsAppButton();
   setupImageFallbacks();
@@ -106,20 +104,6 @@ function setupRevealAnimations() {
   items.forEach((item) => observer.observe(item));
 }
 
-function setupNewsletterForms() {
-  document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
-    const feedback = form.querySelector(".form-feedback");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (feedback) {
-        feedback.textContent = "Obrigada. Seu interesse foi registrado para as novidades da Belluno Essenza.";
-      }
-      form.reset();
-    });
-  });
-}
-
 function hydrateWhatsAppLinks() {
   document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
     const message = link.dataset.whatsappMessage || SITE_CONFIG.defaultWhatsAppMessage;
@@ -169,7 +153,7 @@ async function loadCatalogPayload() {
   try {
     const response = await fetch(SITE_CONFIG.dataUrl);
     if (!response.ok) {
-      throw new Error("Não foi possível carregar o catálogo.");
+      throw new Error("Nao foi possivel carregar o catalogo.");
     }
     return await response.json();
   } catch (error) {
@@ -205,8 +189,8 @@ function normalizeProduct(product, index) {
     disponivel: (toNumber(product.estoque) ?? 1) > 0,
     nome: textOrFallback(product.nome, "Produto Belluno"),
     subtitulo: textOrFallback(product.subtitulo),
-    categoria: textOrFallback(product.categoria, "Coleção Belluno"),
-    familia_olfativa: textOrFallback(product.familia_olfativa, "Família sensorial"),
+    categoria: textOrFallback(product.categoria, "Colecao Belluno"),
+    familia_olfativa: textOrFallback(product.familia_olfativa, "Familia sensorial"),
     volume: textOrFallback(product.volume, "Sob consulta"),
     tempo_queima: textOrFallback(product.tempo_queima, "Sob consulta"),
     descricao_curta: textOrFallback(product.descricao_curta),
@@ -269,32 +253,32 @@ function textOrFallback(value, fallback = "") {
 }
 
 const LOOKALIKE_CHARACTER_MAP = {
-  "а": "a",
-  "А": "A",
-  "е": "e",
-  "Е": "E",
-  "о": "o",
-  "О": "O",
-  "р": "p",
-  "Р": "P",
-  "с": "c",
-  "С": "C",
-  "у": "y",
-  "У": "Y",
-  "х": "x",
-  "Х": "X",
-  "і": "i",
-  "І": "I",
-  "ј": "j",
-  "Ј": "J",
-  "к": "k",
-  "К": "K",
-  "м": "m",
-  "М": "M",
-  "т": "t",
-  "Т": "T",
-  "в": "b",
-  "В": "B"
+  "Ð°": "a",
+  "Ð": "A",
+  "Ðµ": "e",
+  "Ð•": "E",
+  "Ð¾": "o",
+  "Ðž": "O",
+  "Ñ€": "p",
+  "Ð ": "P",
+  "Ñ": "c",
+  "Ð¡": "C",
+  "Ñƒ": "y",
+  "Ð£": "Y",
+  "Ñ…": "x",
+  "Ð¥": "X",
+  "Ñ–": "i",
+  "Ð†": "I",
+  "Ñ˜": "j",
+  "Ðˆ": "J",
+  "Ðº": "k",
+  "Ðš": "K",
+  "Ð¼": "m",
+  "Ðœ": "M",
+  "Ñ‚": "t",
+  "Ð¢": "T",
+  "Ð²": "b",
+  "Ð’": "B"
 };
 
 function normalizeLookalikeCharacters(value) {
@@ -423,20 +407,17 @@ function renderCards(container, products, emptyText) {
 
 async function initHome() {
   const featuredContainer = document.getElementById("featured-products");
+  if (!featuredContainer) {
+    return;
+  }
 
   try {
-    const products = await fetchCatalog();
-    const activeProducts = products
+    const activeProducts = (await fetchCatalog())
       .filter((product) => product.ativo)
       .sort((a, b) => a.ordem - b.ordem);
-    const featured = activeProducts
-      .filter((product) => product.destaque)
-      .sort((a, b) => a.ordem - b.ordem);
-
-    const list = featured.length ? featured.slice(0, 4) : activeProducts.slice(0, 4);
-    renderCards(featuredContainer, list, "Adicione produtos na planilha para popular esta seção.");
+    renderCards(featuredContainer, activeProducts, "Catalogo em atualizacao.");
   } catch (error) {
-    renderError(featuredContainer, "Não foi possível carregar os produtos em destaque.");
+    renderError(featuredContainer, "Nao foi possivel carregar os produtos.");
   }
 }
 
@@ -528,7 +509,7 @@ async function initCatalog() {
 
     applyFilters();
   } catch (error) {
-    renderError(grid, "Não foi possível carregar o catálogo.");
+    renderError(grid, "Nao foi possivel carregar o catalogo.");
     if (resultCount) {
       resultCount.textContent = "Falha ao carregar produtos.";
     }
@@ -594,7 +575,7 @@ async function initProduct() {
   }
 
   if (!requestedSlug) {
-    renderError(container, "Selecione um produto a partir do catálogo para ver os detalhes.");
+    renderError(container, "Selecione um produto a partir do catalogo para ver os detalhes.");
     if (relatedSection) {
       relatedSection.hidden = true;
     }
@@ -606,7 +587,7 @@ async function initProduct() {
     const product = products.find((item) => item.slug === requestedSlug || item.slugKey === requestedSlugKey);
 
     if (!product) {
-      renderError(container, "Produto não encontrado. Volte ao catálogo para escolher outra fragrância.");
+      renderError(container, "Produto nao encontrado. Volte ao catalogo para escolher outra fragrancia.");
       const fallbackProducts = products.slice(0, 3);
       if (relatedContainer && fallbackProducts.length) {
         if (relatedSection) {
@@ -641,7 +622,7 @@ async function initProduct() {
       renderCards(
         relatedContainer,
         relatedProducts,
-        "Adicione outros produtos à planilha para enriquecer as sugestões."
+        "Adicione outros produtos a planilha para enriquecer as sugestoes."
       );
     } else if (relatedSection) {
       relatedSection.hidden = true;
@@ -653,11 +634,11 @@ async function initProduct() {
     updateProductMeta(product);
     setupProductGallery(container);
   } catch (error) {
-    renderError(container, "Não foi possível carregar os detalhes do produto.");
+    renderError(container, "Nao foi possivel carregar os detalhes do produto.");
     if (relatedSection) {
       relatedSection.hidden = false;
     }
-    renderError(relatedContainer, "Não foi possível carregar produtos relacionados.");
+    renderError(relatedContainer, "Nao foi possivel carregar produtos relacionados.");
   }
 }
 
@@ -668,22 +649,21 @@ function renderProductDetail(container, product) {
     : "";
   const images = product.imagens.length ? product.imagens : [SITE_CONFIG.fallbackImage];
   const noteCards = [
-    { title: "Topo", content: product.notas_topo || "Notas frescas e luminosas." },
-    { title: "Coração", content: product.notas_coracao || "Corpo elegante e equilibrado." },
-    { title: "Base", content: product.notas_base || "Fundo macio, confortável e duradouro." }
+    { title: "Topo", content: product.notas_topo || "Saida fresca e elegante." },
+    { title: "Coracao", content: product.notas_coracao || "Corpo floral equilibrado." },
+    { title: "Base", content: product.notas_base || "Fundo suave e aconchegante." }
   ];
   const details = [
-    { title: "Descrição", content: product.descricao_completa || product.descricao_curta },
-    { title: "Modo de uso", content: product.modo_de_uso || "Utilize conforme a proposta do produto e mantenha em local ventilado." },
-    { title: "Composição", content: product.composicao || "Informação editável na planilha de produtos." },
-    { title: "Entrega e pedido", content: "A Belluno Essenza trabalha com atendimento consultivo. Use o botão abaixo para solicitar este item ou montar um kit especial." }
+    { title: "Descricao", content: product.descricao_curta || product.descricao_completa || "Detalhes disponiveis sob consulta." },
+    { title: "Modo de uso", content: product.modo_de_uso || "Use em superficie plana e resistente ao calor." },
+    { title: "Composicao", content: product.composicao || "Cera vegetal e essencia." }
   ];
   const badge = product.selo
     ? `<span class="badge">${escapeHtml(product.selo)}</span>`
     : product.destaque
       ? `<span class="badge">Destaque Belluno</span>`
       : "";
-  const whatsappMessage = `Olá, Belluno Essenza! Tenho interesse no produto ${product.nome} (${product.sku}). Pode me ajudar com o pedido?`;
+  const whatsappMessage = `Ola, Belluno Essenza! Tenho interesse no produto ${product.nome} (${product.sku}). Pode me ajudar com o pedido?`;
 
   container.innerHTML = `
     <div class="product-detail-surface">
@@ -708,14 +688,14 @@ function renderProductDetail(container, product) {
 
         <div class="product-summary">
           ${badge}
-          <p class="product-category">${escapeHtml(product.categoria)} · ${escapeHtml(product.familia_olfativa)}</p>
+          <p class="product-category">${escapeHtml(product.categoria)} - ${escapeHtml(product.familia_olfativa)}</p>
           <h1>${escapeHtml(product.nome)}</h1>
           <p class="product-subtitle">${escapeHtml(product.subtitulo || product.descricao_curta)}</p>
           <div class="price-stack">
             <span class="price-current">${formatCurrency(currentPrice)}</span>
             ${oldPrice}
           </div>
-          <p class="product-long-copy">${escapeHtml(product.descricao_curta || product.descricao_completa)}</p>
+          <p class="product-long-copy">${escapeHtml(product.descricao_curta || "Peca da colecao Belluno Essenza.")}</p>
 
           <div class="product-meta-grid">
             <div class="product-meta-item">
@@ -737,8 +717,8 @@ function renderProductDetail(container, product) {
           </div>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="${buildWhatsAppLink(whatsappMessage)}" target="_blank" rel="noreferrer">Comprar / Falar no WhatsApp</a>
-            <a class="button button-secondary" href="catalogo.html">Voltar ao catálogo</a>
+            <a class="button button-primary" href="${buildWhatsAppLink(whatsappMessage)}" target="_blank" rel="noreferrer">Comprar no WhatsApp</a>
+            <a class="button button-secondary" href="catalogo.html">Voltar ao catalogo</a>
           </div>
         </div>
       </div>
@@ -851,42 +831,6 @@ function renderError(container, message) {
 }
 
 function initContact() {
-  const form = document.getElementById("contact-form");
-
-  if (!form) {
-    return;
-  }
-
-  const feedback = form.querySelector(".form-feedback");
-  const followup = document.getElementById("contact-whatsapp-followup");
-  const followupLink = document.getElementById("contact-whatsapp-link");
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const data = new FormData(form);
-    const name = textOrFallback(data.get("name"));
-    const email = textOrFallback(data.get("email"));
-    const phone = textOrFallback(data.get("phone"));
-    const interest = textOrFallback(data.get("interest"));
-    const message = textOrFallback(data.get("message"));
-
-    const whatsappMessage = [
-      `Olá, ${SITE_CONFIG.brandName}!`,
-      `Meu nome é ${name}.`,
-      `Interesse: ${interest}.`,
-      email ? `E-mail: ${email}.` : "",
-      phone ? `Telefone: ${phone}.` : "",
-      `Mensagem: ${message}`
-    ].filter(Boolean).join(" ");
-
-    if (followup && followupLink) {
-      followupLink.setAttribute("href", buildWhatsAppLink(whatsappMessage));
-      followup.hidden = false;
-    }
-
-    if (feedback) {
-      feedback.textContent = "Sua mensagem foi preparada. Clique no botao abaixo para continuar no WhatsApp.";
-    }
-  });
+  // Pagina de contato simplificada: apenas links diretos para WhatsApp e Instagram.
 }
+
